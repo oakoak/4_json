@@ -1,13 +1,14 @@
 # Prettify JSON
 
 ---
-The script reads the json file and writes the edited data to a json file
+The script reads the json file and prints in a pretty form
 ---
 
 ### Quickstart
 + Script takes the path to the files as a parameters
 + Script checks the path, if there is no file - prints an error
 + Script prints an error if the file is not json
++ If you add second parameter, the script will output the data to a file with this path
 
 Example of script launch on Linux, Python 3.5:
 
