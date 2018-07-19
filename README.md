@@ -4,7 +4,7 @@
 The script reads the json file and prints in a pretty form
 ---
 
-### Quickstart
+### Description 
 + Script takes the path to the files as a parameters
 + Script checks the path, if there is no file - prints an error
 + Script prints an error if the file is not json
@@ -12,6 +12,7 @@ The script reads the json file and prints in a pretty form
 
 Example of script launch on Linux, Python 3.5:
 
+### Example using
 ```#!bash
 $ python pprint_json.py <path to input file> <path to output file> 
 ```

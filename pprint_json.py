@@ -8,16 +8,18 @@ def load_data(filepath):
     return ugly_data
 
 
-def pretty_print_json(ugly_data):
+def pretty_print_json(json_data):
+    print(json_data)
+
+
+def get_pretty_json(unformatted_data):
     pretty_json = json.dumps(
-        ugly_data,
+        unformatted_data,
         ensure_ascii=False,
         sort_keys=True,
         indent=4
     )
-    print(pretty_json)
     return pretty_json
-
 
 def write_to_file(filepath, pretty_data):
     with open(filepath, encoding='utf-8', mode='w+') as output_file:
@@ -40,20 +42,18 @@ def get_parser_args():
     arguments = parser.parse_args()
     return arguments
 
-def main():
+
+if __name__ == "__main__":
     arguments = get_parser_args()
-    if arguments.input_file is None:
-        exit("Error: You did not enter paths to the input and output files!")
     try:
         json_data = load_data(arguments.input_file)
     except FileNotFoundError:
-        exit("Error: file or path '{0}' not found!\n".format(arguments.input_file))
+        exit("Error: file or path '{0}' not found!\n"
+             .format(arguments.input_file))
     except json.JSONDecodeError:
         exit("Error: this is not json-file!")
-    pretty_json_data = pretty_print_json(json_data)
+    pretty_json_data = get_pretty_json(json_data)
+    pretty_print_json(pretty_json_data)
     if arguments.output_file is not None:
         write_to_file(arguments.output_file, pretty_json_data)
 
-
-if __name__ == "__main__":
-    main()
