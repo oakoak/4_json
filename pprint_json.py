@@ -4,22 +4,23 @@ import argparse
 
 def load_data(filepath):
     with open(filepath, "r", encoding="utf-8") as data_file:
-        ugly_data = json.load(data_file)
-    return ugly_data
+        decoded_json = json.load(data_file)
+    return decoded_json
 
 
 def pretty_print_json(json_data):
     print(json_data)
 
 
-def get_pretty_json(unformatted_data):
+def get_pretty_json(decoded_json):
     pretty_json = json.dumps(
-        unformatted_data,
+        decoded_json,
         ensure_ascii=False,
         sort_keys=True,
         indent=4
     )
     return pretty_json
+
 
 def write_to_file(filepath, pretty_data):
     with open(filepath, encoding='utf-8', mode='w+') as output_file:
